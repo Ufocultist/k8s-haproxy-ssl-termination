@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssl-termination
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ssl-termination
+  template:
+    metadata:
+      labels:
+        app: ssl-termination
+    spec:
+      containers:
+        - name: python-http
+          image: trinitronx/python-simplehttpserver
+          ports:
+          - containerPort: 8080
+
+        - name: haproxy
+          imagePullPolicy: Never
+          image: ssl-termination
+          ports:
+          - containerPort: 443
