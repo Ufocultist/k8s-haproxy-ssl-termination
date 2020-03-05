@@ -7,7 +7,7 @@ docker build ./haproxy -t ssl-termination
 kubectl apply -f ./
 
 # Wait for a while 
-echo "Pod is deploying, please wait 20 sec, then it'll be exposed"
+echo "Pod is deploying, please wait 60 sec, then it'll be exposed" && sleep 60
 POD_ID=$(kubectl get pods | grep ssl-termination | awk '{print $1}')
 kubectl port-forward ${POD_ID} 1443:443
 

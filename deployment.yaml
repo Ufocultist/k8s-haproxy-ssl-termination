@@ -13,11 +13,12 @@ spec:
         app: ssl-termination
     spec:
       containers:
-        - name: python-http
-          image: trinitronx/python-simplehttpserver
+        - name: httpd
+          image: httpd:latest
           ports:
-          - containerPort: 8080
-
+          - containerPort: 80
+            name: httpd
+ 
         - name: haproxy
           imagePullPolicy: Never
           image: ssl-termination
