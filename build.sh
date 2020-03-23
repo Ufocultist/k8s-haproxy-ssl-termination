@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set docker env for minikube. Comment line below if you'd like to use localhost
+eval $(minikube docker-env)
+
 # Build haproxy image with self-signed certificate
 docker build ./haproxy -t ssl-termination
 
