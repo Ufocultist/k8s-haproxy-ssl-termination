@@ -7,7 +7,7 @@ eval $(minikube docker-env)
 docker build ./haproxy -t ssl-termination
 
 # Apply all resources to local k8s
-kubectl apply -f ./
+kubectl apply -f deployment.yaml
 
 # Wait for a while 
 echo "Pod is deploying, please wait 60 sec, then it'll be exposed" && sleep 60
