@@ -12,12 +12,14 @@ spec:
       labels:
         app: ssl-termination
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
-        - name: httpd
-          image: httpd:latest
+        - name: webapp1
+          image: ufocultist/getting-started:latest
           ports:
-          - containerPort: 80
-            name: httpd
+          - containerPort: 30000
+            name: webapp1
  
         - name: haproxy
           imagePullPolicy: Never
