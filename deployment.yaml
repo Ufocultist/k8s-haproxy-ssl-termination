@@ -13,6 +13,12 @@ spec:
         app: ssl-termination
     spec:
       containers:
+        - name: app
+          image: ufocultist/node-bulletin-board:latest
+          ports:
+          - containerPort: 8080
+            name: app
+
         - name: httpd
           image: ufocultist/getting-started:latest
           ports:
@@ -20,7 +26,7 @@ spec:
             name: httpd
  
         - name: haproxy
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           image: ssl-termination
           ports:
           - containerPort: 443
